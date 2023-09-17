@@ -45,10 +45,35 @@
 4 Вивести у консоль результат
 */
 
-const userInp = prompt("Введіть число:");
-const hours = Math.floor(userInp / 60)
-  .toString()
-  .padStart(2, "0");
-const min = (userInp % 60).toString().padStart(2, "0");
+// const userInp = prompt("Введіть число:");
+// const hours = Math.floor(userInp / 60)
+//   .toString()
+//   .padStart(2, "0");
+// const min = (userInp % 60).toString().padStart(2, "0");
 
-console.log(`${hours}:${min}`);
+// console.log(`${hours}:${min}`);
+
+/**
+ *? При завантаженні сторінки користувачеві пропонується
+ *? в prompt ввести число. Введення додається до значення
+ *? змінної total.
+ *? Операція введення числа триває до того часу,
+ *? поки користувач не натисне кнопку Cancel у prompt.
+ *? Після того як користувач припинив введення, натиснувши на
+ *? кнопку Cancel, показати alert з рядком "Загальна сума введених чисел дорівнює [число]."
+ 
+ *! Робити перевірку, що користувач ввів саме число,
+ *! а не довільний набір символів не потрібно.
+ */
+
+let userInput = prompt('Введіть число');
+let total = 0;
+
+do {
+	if (userInput !== null) {
+		total += Number(userInput);
+		userInput = prompt('Введіть число');
+	}
+} while (userInput !== null);
+
+alert(`Загальна сума введених чисел дорівнює ${total}.`);
