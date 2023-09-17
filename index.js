@@ -66,14 +66,37 @@
  *! а не довільний набір символів не потрібно.
  */
 
-let userInput = prompt('Введіть число');
-let total = 0;
+// let userInput = prompt('Введіть число');
+// let total = 0;
 
-do {
-	if (userInput !== null) {
-		total += Number(userInput);
-		userInput = prompt('Введіть число');
-	}
-} while (userInput !== null);
+// do {
+// 	if (userInput !== null) {
+// 		total += Number(userInput);
+// 		userInput = prompt('Введіть число');
+// 	}
+// } while (userInput !== null);
 
-alert(`Загальна сума введених чисел дорівнює ${total}.`);
+// alert(`Загальна сума введених чисел дорівнює ${total}.`);
+
+/**
+ *? Записати масив, const arr = ['BEST', 'the', 'foo', 'is', 'JS' ]
+ *? розвернути масив,
+ *? вирізати foo,
+ *? перевести його в рядок розділений пробілами
+ *? Очікуваний результат "JS id the BEST"
+ */
+
+/* массив arr не має мутуватися */
+
+const arr = ['BEST', 'the', 'foo', 'is', 'JS'];
+// const copyArr = arr.slice();
+// copyArr.splice(copyArr.indexOf('foo'), 1);
+// const string = copyArr.reverse().join(' ');
+// console.log(string);
+
+const string = arr
+  .slice(0, arr.indexOf('foo'))
+  .concat(arr.slice(arr.indexOf('foo') + 1))
+  .reverse()
+  .join(' ');
+console.log(string);
