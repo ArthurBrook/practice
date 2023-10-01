@@ -88,7 +88,7 @@
 
 /* массив arr не має мутуватися */
 
-const arr = ['BEST', 'the', 'foo', 'is', 'JS'];
+const arr = ["BEST", "the", "foo", "is", "JS"];
 // const copyArr = arr.slice();
 // copyArr.splice(copyArr.indexOf('foo'), 1);
 // const string = copyArr.reverse().join(' ');
@@ -178,16 +178,35 @@ const arr = ['BEST', 'the', 'foo', 'is', 'JS'];
 //  *? Результат вивести у консоль.
 //  *? Очікуваний результат ["Одеса", "Умань", "Харків"]
 //  */
-const concerts = {
-  Київ: new Date('2020-04-01'),
-  Умань: new Date('2025-07-02'),
-  Вінниця: new Date('2020-04-21'),
-  Одеса: new Date('2025-03-15'),
-  Хмельницький: new Date('2020-04-18'),
-  Харків: new Date('2025-07-10'),
-};
+// const concerts = {
+//   Київ: new Date('2020-04-01'),
+//   Умань: new Date('2025-07-02'),
+//   Вінниця: new Date('2020-04-21'),
+//   Одеса: new Date('2025-03-15'),
+//   Хмельницький: new Date('2020-04-18'),
+//   Харків: new Date('2025-07-10'),
+// };
 
-const cities = Object.keys(concerts);
-const noConcertCity = cities.filter(city => concerts[city] > new Date());
-noConcertCity.sort((a, b) => concerts[a] - concerts[b]);
-console.log(noConcertCity);
+// const cities = Object.keys(concerts);
+// const noConcertCity = cities.filter(city => concerts[city] > new Date());
+// noConcertCity.sort((a, b) => concerts[a] - concerts[b]);
+// console.log(noConcertCity);
+
+/**
+ *? Напишіть функцію updateObject, яка приймає об'єкт та ім'я ключа,
+ *? який треба видалити.
+ *? повертає новий об'єкт без вказаного параметра
+ *? Очікуваний результат updateObject({a: 1, b: 2, c: 3}, 'b') => {a: 1, c: 3}
+
+ */
+
+const object = { a: 1, b: 2, c: 3 };
+
+function updateObject(obj, key) {
+  const newObject = { ...obj };
+  delete newObject[key];
+  return newObject;
+}
+
+console.log(updateObject(object, "b"));
+console.log(object);
