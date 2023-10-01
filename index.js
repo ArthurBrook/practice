@@ -94,9 +94,32 @@ const arr = ['BEST', 'the', 'foo', 'is', 'JS'];
 // const string = copyArr.reverse().join(' ');
 // console.log(string);
 
-const string = arr
-  .slice(0, arr.indexOf('foo'))
-  .concat(arr.slice(arr.indexOf('foo') + 1))
-  .reverse()
-  .join(' ');
-console.log(string);
+// const string = arr
+//   .slice(0, arr.indexOf('foo'))
+//   .concat(arr.slice(arr.indexOf('foo') + 1))
+//   .reverse()
+//   .join(' ');
+// console.log(string);
+
+
+/* Напишіть функцію, яка приймає об'єкт і рахує загальну суму зарплат працівників. */
+
+const someObj = {
+  worker1: 360,
+  worker2: 750,
+  worker3: 240,
+};
+
+function culcSalary(obj) {
+  const values = Object.values(obj);
+  let totalResult = 0;
+  
+  for(const value of values) {
+    totalResult += value;
+  }
+
+  return totalResult;
+}
+
+const number = culcSalary(someObj);
+console.log(number)
