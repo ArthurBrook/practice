@@ -200,13 +200,41 @@ const arr = ["BEST", "the", "foo", "is", "JS"];
 
  */
 
-const object = { a: 1, b: 2, c: 3 };
+// const object = { a: 1, b: 2, c: 3 };
 
-function updateObject(obj, key) {
-  const newObject = { ...obj };
-  delete newObject[key];
-  return newObject;
+// function updateObject(obj, key) {
+//   const newObject = { ...obj };
+//   delete newObject[key];
+//   return newObject;
+// }
+
+// console.log(updateObject(object, "b"));
+// console.log(object);
+
+
+//TODO:==============================================
+/**
+*? Поверніть об'єкт, в якому вказано кількість тегів.
+*? Очікуваний результат {js: 3, nodejs: 3, html: 2, css: 2, react: 2}
+
+ */
+const tweets = [
+  { id: "000", likes: 5, tags: ["js", "nodejs"] },
+  { id: "001", likes: 2, tags: ["html", "css"] },
+  { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+  { id: "003", likes: 8, tags: ["css", "react"] },
+  { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+];
+
+function allTags(arr) {
+  const tags = arr.flatMap(el => el.tags);
+  const obj = tags.reduce((acc, tag) => {
+    return {
+      ...acc,
+      [tag]: acc[tag] ? acc[tag] + 1 : 1
+    }
+  }, {})
+  console.log(obj)
 }
 
-console.log(updateObject(object, "b"));
-console.log(object);
+allTags(tweets);
