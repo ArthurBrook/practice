@@ -88,7 +88,7 @@
 
 /* массив arr не має мутуватися */
 
-const arr = ["BEST", "the", "foo", "is", "JS"];
+const arr = ['BEST', 'the', 'foo', 'is', 'JS'];
 // const copyArr = arr.slice();
 // copyArr.splice(copyArr.indexOf('foo'), 1);
 // const string = copyArr.reverse().join(' ');
@@ -129,19 +129,65 @@ const arr = ["BEST", "the", "foo", "is", "JS"];
 // *? Надайте ід для кожного продукту
 // */
 
-const fruits = [
-  { name: "apple", price: 200 },
-  { name: "orange", price: 300 },
-  { name: "grapes", price: 750 },
-];
+// const fruits = [
+//   { name: "apple", price: 200 },
+//   { name: "orange", price: 300 },
+//   { name: "grapes", price: 750 },
+// ];
 
-function apdateFrutes(arr) {
-  const apdateFrute = arr.map((frute, index) => ({
-    ...frute,
-    price: frute.price * 0.8,
-    id: index + 1,
-  }));
-  console.log(apdateFrute);
-}
+// function apdateFrutes(arr) {
+//   const apdateFrute = arr.map((frute, index) => ({
+//     ...frute,
+//     price: frute.price * 0.8,
+//     id: index + 1,
+//   }));
+//   console.log(apdateFrute);
+// }
 
-apdateFrutes(fruits);
+// apdateFrutes(fruits);
+
+/**
+ *? Напиши скрипт для об'єкта user,
+ *? послідовно:
+ *? 1 додати поле mood зі значенням 'happy'
+ *? 2 замінить hobby на 'skydiving'
+ *? 3 замінить значення premium на false
+ *? 4 виводить вміст об'єкта users у форматі
+ *? ключ: значення використовуючи Object.keys() і for...of
+ */
+
+// const user = {
+//   name: 'John',
+//   age: 20,
+//   hobby: 'tennis',
+//   premium: true,
+// };
+
+// user.mood = 'happy';
+// user.hobby = 'skydiving';
+// user.premium = false;
+// const keys = Object.keys(user);
+// for (const key of keys) {
+//   console.log(`Key: ${key}`);
+// }
+
+// *? З об'єкту concerts потрібно отримати масив
+//  *? в якому будуть лише імена міст.
+//  *? З масиву потрібно прибрати міста, в яких концерт уже пройшов і
+//  *? відсортувати їх у хронологічному порядку.
+//  *? Результат вивести у консоль.
+//  *? Очікуваний результат ["Одеса", "Умань", "Харків"]
+//  */
+const concerts = {
+  Київ: new Date('2020-04-01'),
+  Умань: new Date('2025-07-02'),
+  Вінниця: new Date('2020-04-21'),
+  Одеса: new Date('2025-03-15'),
+  Хмельницький: new Date('2020-04-18'),
+  Харків: new Date('2025-07-10'),
+};
+
+const cities = Object.keys(concerts);
+const noConcertCity = cities.filter(city => concerts[city] > new Date());
+noConcertCity.sort((a, b) => concerts[a] - concerts[b]);
+console.log(noConcertCity);
