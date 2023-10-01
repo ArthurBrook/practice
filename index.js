@@ -88,7 +88,7 @@
 
 /* массив arr не має мутуватися */
 
-const arr = ['BEST', 'the', 'foo', 'is', 'JS'];
+const arr = ["BEST", "the", "foo", "is", "JS"];
 // const copyArr = arr.slice();
 // copyArr.splice(copyArr.indexOf('foo'), 1);
 // const string = copyArr.reverse().join(' ');
@@ -101,25 +101,47 @@ const arr = ['BEST', 'the', 'foo', 'is', 'JS'];
 //   .join(' ');
 // console.log(string);
 
-
 /* Напишіть функцію, яка приймає об'єкт і рахує загальну суму зарплат працівників. */
 
-const someObj = {
-  worker1: 360,
-  worker2: 750,
-  worker3: 240,
-};
+// const someObj = {
+//   worker1: 360,
+//   worker2: 750,
+//   worker3: 240,
+// };
 
-function culcSalary(obj) {
-  const values = Object.values(obj);
-  let totalResult = 0;
-  
-  for(const value of values) {
-    totalResult += value;
-  }
+// function culcSalary(obj) {
+//   const values = Object.values(obj);
+//   let totalResult = 0;
 
-  return totalResult;
+//   for(const value of values) {
+//     totalResult += value;
+//   }
+
+//   return totalResult;
+// }
+
+// const number = culcSalary(someObj);
+// console.log(number)
+
+///**
+// *? Напишіть функцію, яка приймає массив об'єктів і повертає новий массив
+// *? Зробіть знижку 20 % на всі фрукти у масиві
+// *? Надайте ід для кожного продукту
+// */
+
+const fruits = [
+  { name: "apple", price: 200 },
+  { name: "orange", price: 300 },
+  { name: "grapes", price: 750 },
+];
+
+function apdateFrutes(arr) {
+  const apdateFrute = arr.map((frute, index) => ({
+    ...frute,
+    price: frute.price * 0.8,
+    id: index + 1,
+  }));
+  console.log(apdateFrute);
 }
 
-const number = culcSalary(someObj);
-console.log(number)
+apdateFrutes(fruits);
