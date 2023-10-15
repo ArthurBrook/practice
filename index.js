@@ -88,7 +88,7 @@
 
 /* массив arr не має мутуватися */
 
-const arr = ['BEST', 'the', 'foo', 'is', 'JS'];
+const arr = ["BEST", "the", "foo", "is", "JS"];
 // const copyArr = arr.slice();
 // copyArr.splice(copyArr.indexOf('foo'), 1);
 // const string = copyArr.reverse().join(' ');
@@ -317,39 +317,75 @@ const arr = ['BEST', 'the', 'foo', 'is', 'JS'];
 //       LOW: "low",
 //     };
 
-class Notes {
-	static Priority() {
-		return {
-			HIGHT: 'hight',
-			LOW: 'low',
-		};
-	}
+// class Notes {
+// 	static Priority() {
+// 		return {
+// 			HIGHT: 'hight',
+// 			LOW: 'low',
+// 		};
+// 	}
 
-	constructor() {
-		this.items = [];
-	}
+// 	constructor() {
+// 		this.items = [];
+// 	}
 
-	addNote(note) {
-		this.items.push(note);
-	}
+// 	addNote(note) {
+// 		this.items.push(note);
+// 	}
 
-	removeNote(id) {
-		const index = this.items.findIndex((it) => it.id === id);
-		if (index !== -1) {
-			this.items.splice(index, 1);
-		}
-	}
+// 	removeNote(id) {
+// 		const index = this.items.findIndex((it) => it.id === id);
+// 		if (index !== -1) {
+// 			this.items.splice(index, 1);
+// 		}
+// 	}
 
-	updatePriority(id, newPriority) {
-		const note = this.items.find((it) => it.id === id);
-		if (note !== undefined) {
-			note.priority = newPriority;
-		}
-	}
+// 	updatePriority(id, newPriority) {
+// 		const note = this.items.find((it) => it.id === id);
+// 		if (note !== undefined) {
+// 			note.priority = newPriority;
+// 		}
+// 	}
+// }
+
+// const newClass = new Notes();
+// newClass.addNote({ id: 123, text: 'abc', priority: Notes.Priority().HIGHT });
+// newClass.removeNote(124);
+// newClass.updatePriority(124, Notes.Priority().LOW);
+// console.log(newClass);
+
+//TODO:=============================================
+// Створити клас Worker, у якого є властивості name, age, salary.
+//У класу Worker є метод getSalary.
+//Створити клас TopLevelWorker, у якого є властивість hierarchyLevel
+//і який успадковує клас Worker, додаючи метод getHierarchyLevel
+
+const workerObj = {
+  name: "Mango",
+  age: 30,
+  salary: 5000
+};
+
+class Worker {
+  constructor({ name, age, salary }) {
+    this.name = name;
+    this.age = age;
+    this.salary = salary;
+  }
+  getSalary() {
+    return this.salary;
+  }
 }
 
-const newClass = new Notes();
-newClass.addNote({ id: 123, text: 'abc', priority: Notes.Priority().HIGHT });
-newClass.removeNote(124);
-newClass.updatePriority(124, Notes.Priority().LOW);
-console.log(newClass);
+class TopLevelWorker extends Worker {
+  constructor(obj, hierarchyLevel) {
+    super(obj);
+    this.hierarchyLevel = hierarchyLevel;
+  }
+  getHierarchyLevel() {
+    return this.hierarchyLevel;
+  }
+}
+
+const newTopLevelWorker = new TopLevelWorker(workerObj, "Tor worker");
+console.log(newTopLevelWorker);
