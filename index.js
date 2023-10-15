@@ -88,7 +88,7 @@
 
 /* массив arr не має мутуватися */
 
-const arr = ["BEST", "the", "foo", "is", "JS"];
+const arr = ['BEST', 'the', 'foo', 'is', 'JS'];
 // const copyArr = arr.slice();
 // copyArr.splice(copyArr.indexOf('foo'), 1);
 // const string = copyArr.reverse().join(' ');
@@ -211,30 +211,59 @@ const arr = ["BEST", "the", "foo", "is", "JS"];
 // console.log(updateObject(object, "b"));
 // console.log(object);
 
-
 //TODO:==============================================
 /**
 *? Поверніть об'єкт, в якому вказано кількість тегів.
 *? Очікуваний результат {js: 3, nodejs: 3, html: 2, css: 2, react: 2}
 
  */
-const tweets = [
-  { id: "000", likes: 5, tags: ["js", "nodejs"] },
-  { id: "001", likes: 2, tags: ["html", "css"] },
-  { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
-  { id: "003", likes: 8, tags: ["css", "react"] },
-  { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
-];
+// const tweets = [
+//   { id: "000", likes: 5, tags: ["js", "nodejs"] },
+//   { id: "001", likes: 2, tags: ["html", "css"] },
+//   { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+//   { id: "003", likes: 8, tags: ["css", "react"] },
+//   { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+// ];
 
-function allTags(arr) {
-  const tags = arr.flatMap(el => el.tags);
-  const obj = tags.reduce((acc, tag) => {
-    return {
-      ...acc,
-      [tag]: acc[tag] ? acc[tag] + 1 : 1
-    }
-  }, {})
-  console.log(obj)
-}
+// function allTags(arr) {
+//   const tags = arr.flatMap(el => el.tags);
+//   const obj = tags.reduce((acc, tag) => {
+//     return {
+//       ...acc,
+//       [tag]: acc[tag] ? acc[tag] + 1 : 1
+//     }
+//   }, {})
+//   console.log(obj)
+// }
 
-allTags(tweets);
+// allTags(tweets);
+
+//TODO:=============================================
+
+/**
+*? Напиши функцію конструктор User для 
+*? створення користувача з такими властивостями:
+*? a. userName - ім'я, рядок
+*? b. age - вік, число
+*? c. numbersOfPost - кількість постів, число
+*? d. функція очікує 1 параметр - об'єкт налаштувань з однойменними властивостями
+
+*? Додай метод getInfo(), який повертає рядок:
+*? `Користувачеві ${ім'я} ${вік} років і в нього ${кількістьПублікацій} публікацій.`
+
+ */
+
+const User = function (userObject) {
+  this.userName = userObject.userName;
+  this.age = userObject.age;
+  this.numbersOfPost = userObject.numbersOfPost;
+
+  // this.getInfo = function () {
+  //   return `Користувачеві ${this.userName} ${this.age} років і в нього ${this.numbersOfPost} публікацій.`;
+  // };
+};
+User.prototype.getInfo = function () {
+  return `Користувачеві ${this.userName} ${this.age} років і в нього ${this.numbersOfPost} публікацій.`;
+};
+const newUser = new User({ userName: 'Polly', age: 30, numbersOfPost: 15 });
+console.log(newUser);
