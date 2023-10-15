@@ -276,26 +276,80 @@ const arr = ['BEST', 'the', 'foo', 'is', 'JS'];
  *? Оголоси приватні властивості #login #email,
  *? доступ до яких зроби через геттер та сеттер login email
  */
-class Client {
-  #login;
-  #email;
-  constructor(login, email) {
-    this.#login = login;
-    this.#email = email;
-  }
-  get login() {
-    return this.#login;
-  }
-  set login(newLogin) {
-    this.#login = newLogin;
-  }
-  get email() {
-    return this.#email;
-  }
-  set email(newEmail) {
-    this.#email = newEmail;
-  }
+// class Client {
+//   #login;
+//   #email;
+//   constructor(login, email) {
+//     this.#login = login;
+//     this.#email = email;
+//   }
+//   get login() {
+//     return this.#login;
+//   }
+//   set login(newLogin) {
+//     this.#login = newLogin;
+//   }
+//   get email() {
+//     return this.#email;
+//   }
+//   set email(newEmail) {
+//     this.#email = newEmail;
+//   }
+// }
+// const newClient = new Client('Mango', 'qgirp');
+// newClient.email = 'fdvkfnmdd';
+// console.log(newClient.email);
+
+//TODO:=============================================
+/**
+ *? Напиши клас Notes який управляє колекцією нотаток у
+ *? властивості items.
+ *? Нотатка - це об'єкт із властивостями id, text і priority.
+ *? Додай класу статичний метод Priopity,
+ *? який буде повертати об'єкт із пріоритетами.
+ *? Додай методи addNote(note), removeNote(text)
+ *? updatePriority(text, newPriority)
+ */
+
+//  static Priority() {
+//     return {
+//       HIGHT: "hight",
+//       LOW: "low",
+//     };
+
+class Notes {
+	static Priority() {
+		return {
+			HIGHT: 'hight',
+			LOW: 'low',
+		};
+	}
+
+	constructor() {
+		this.items = [];
+	}
+
+	addNote(note) {
+		this.items.push(note);
+	}
+
+	removeNote(id) {
+		const index = this.items.findIndex((it) => it.id === id);
+		if (index !== -1) {
+			this.items.splice(index, 1);
+		}
+	}
+
+	updatePriority(id, newPriority) {
+		const note = this.items.find((it) => it.id === id);
+		if (note !== undefined) {
+			note.priority = newPriority;
+		}
+	}
 }
-const newClient = new Client('Mango', 'qgirp');
-newClient.email = 'fdvkfnmdd';
-console.log(newClient.email);
+
+const newClass = new Notes();
+newClass.addNote({ id: 123, text: 'abc', priority: Notes.Priority().HIGHT });
+newClass.removeNote(124);
+newClass.updatePriority(124, Notes.Priority().LOW);
+console.log(newClass);
